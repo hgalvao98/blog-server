@@ -1,9 +1,10 @@
 import sqlite3
 from flask import Flask, request, jsonify
 from sqlite3 import Row
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 conn = sqlite3.connect('blog.db', check_same_thread=False)
 conn.row_factory = Row  # Set the row_factory to sqlite3.Row
