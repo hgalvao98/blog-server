@@ -41,7 +41,9 @@ def get_posts():
         comments = cursor.fetchall()
         post['comments'] = len(comments)
 
-    return jsonify(posts)
+    reversed_posts = posts[::-1]
+
+    return jsonify(reversed_posts)
 
 @app.route('/posts/', methods=['POST'])
 def create_post():
@@ -128,4 +130,5 @@ def delete_comment(post_id, comment_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
+
